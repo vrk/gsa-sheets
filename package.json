@@ -2,11 +2,12 @@
   "name": "gsa-sheets",
   "version": "1.0.0",
   "description": "Wrapper library for CRUD operations on a Google Server Account spreadsheet.",
+  "main": "gsa-sheets.js",
   "dependencies": {
     "google-auth-library": "^0.10.0",
     "googleapis": "^18.0.0"
   },
-  "author": "vrkwork@gmail.com",
+  "author": "vrk <vrkwork@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
