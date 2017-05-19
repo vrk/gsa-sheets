@@ -1,6 +1,6 @@
 {
   "name": "gsa-sheets",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Wrapper library for CRUD operations on a Google Server Account spreadsheet.",
   "main": "gsa-sheets.js",
   "dependencies": {
