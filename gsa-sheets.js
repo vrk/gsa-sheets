@@ -16,7 +16,7 @@ function createGsaSpreadsheet(email, key, sheetId) {
   sheet.deleteRow = (rowIndex) => {
     return deleteRow(sheetId, email, key, rowIndex);
   };
-  sheet.updateRow = (rowIndex, row) => {
+  sheet.setRow = (rowIndex, row) => {
     return updateRow(sheetId, email, key, rowIndex, row);
   };
 
