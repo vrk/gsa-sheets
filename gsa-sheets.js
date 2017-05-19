@@ -34,9 +34,13 @@ function getRows(spreadsheetId, email, key) {
       }, function(err, response) {
         if (err) {
           console.log('The API returned an error: ' + err);
-          resolve({error: err});
+          resolve( {error: err} );
+          return;
         }
-        const rows = response.values;
+        let rows = [];
+        if (response && response.values) {
+          rows = response.values;
+        };
         resolve({rows: rows});
       });
     });
@@ -47,6 +51,7 @@ function updateRow(spreadsheetId, email, key, rowIndex, row) {
   return new Promise((resolve) => {
     if (rowIndex < 0) {
       resolve(SUCCESS_RESPONSE);
+      return;
     }
     const rowNumber = rowIndex + 1;
     const range = `${rowNumber}:${rowNumber}`;
@@ -66,6 +71,7 @@ function updateRow(spreadsheetId, email, key, rowIndex, row) {
         if (err) {
           console.log('The API returned an error: ' + err);
           resolve({error: err});
+          return;
         }
         resolve(SUCCESS_RESPONSE);
       });
@@ -91,6 +97,7 @@ function appendRow(spreadsheetId, email, key, row) {
         if (err) {
           console.log('The API returned an error: ' + err);
           resolve({error: err});
+          return;
         }
         resolve(SUCCESS_RESPONSE);
       });
@@ -102,6 +109,7 @@ function deleteRow(spreadsheetId, email, key, rowIndex) {
   return new Promise((resolve) => {
     if (rowIndex < 0) {
       resolve(SUCCESS_RESPONSE);
+      return;
     }
     const deleteRequest = {
       deleteDimension: {
@@ -124,6 +132,7 @@ function deleteRow(spreadsheetId, email, key, rowIndex) {
         if (err) {
           console.log('The API returned an error: ' + err);
           resolve({error: err});
+          return;
         }
         resolve(SUCCESS_RESPONSE);
       });
@@ -148,6 +157,7 @@ function authenticate(email, key) {
       if (err) {
         console.log(err);
         error(err);
+        return;
       } else {
         resolve(jwt);
       }
